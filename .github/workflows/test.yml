@@ -24,7 +24,9 @@ jobs:
           node-version: 20
           cache: "npm"
       - uses: actions/download-artifact@v3
-      - run: ls -la
+        with:
+          path: dist
+      - run: ls -la ./dist
       - name: Cypress test
         uses: cypress-io/github-action@v6
         env:
