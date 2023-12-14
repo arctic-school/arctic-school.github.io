@@ -7,7 +7,7 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "lint": "eslint --ext .js,.astro src",
+    "lint": "eslint --ext .js,.ts,.jsx,.tsx,.astro src",
     "cypress:run": "cypress run",
     "cypress:open": "cypress open",
     "astro": "astro"
