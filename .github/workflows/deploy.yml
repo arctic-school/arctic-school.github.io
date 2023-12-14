@@ -23,8 +23,6 @@ jobs:
           node-version: 20
           cache: "npm"
       - uses: actions/download-artifact@v3
-        with:
-          name: artifact
       - name: Cypress test
         uses: cypress-io/github-action@v6
         env:
