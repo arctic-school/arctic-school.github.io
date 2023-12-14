@@ -2,20 +2,9 @@ name: Test Pull Requests
 
 on:
   pull_request:
-    types: [opened, reopened]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install, build, and upload your build output
-        uses: withastro/action@v1
-        with:
-          node-version: 20
-          package-manager: npm@latest
-
-  test:
+  build_and_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -23,9 +12,12 @@ jobs:
         with:
           node-version: 20
           cache: "npm"
-      - uses: actions/download-artifact@v3
-        with:
-          name: artifact
+      - name: Install npm packages
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Build app
+        run: npm run build
       - name: Cypress test
         uses: cypress-io/github-action@v6
         env:
