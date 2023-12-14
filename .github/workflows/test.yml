@@ -25,7 +25,7 @@ jobs:
           cache: "npm"
       - uses: actions/download-artifact@v3
       - name: Untar artifact
-        run: tar -xvf ./github-pages/artifact.tar ./dist
+        run: tar -xvf ./github-pages/artifact.tar -C ./dist
       - run: ls -R .
       - name: Cypress test
         uses: cypress-io/github-action@v6
