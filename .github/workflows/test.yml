@@ -24,8 +24,8 @@ jobs:
           node-version: 20
           cache: "npm"
       - uses: actions/download-artifact@v3
-        with:
-          path: dist
+      - name: Rename github-pages to dist
+        run: mv github-pages dist
       - run: ls -la ./dist
       - name: Cypress test
         uses: cypress-io/github-action@v6
