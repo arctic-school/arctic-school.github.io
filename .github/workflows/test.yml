@@ -1,0 +1,36 @@
+name: Test Pull Requests
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install, build, and upload your build output
+        uses: withastro/action@v1
+        with:
+          node-version: 20
+          package-manager: npm@latest
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - uses: actions/download-artifact@v3
+        with:
+          name: artifact
+      - name: Cypress test
+        uses: cypress-io/github-actions@v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          browser: chrome
+          start: npm run preview
+          wait-on: "http://localhost:4321"
