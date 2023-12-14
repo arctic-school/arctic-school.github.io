@@ -27,7 +27,7 @@ jobs:
         with:
           name: artifact
       - name: Cypress test
-        uses: cypress-io/github-actions@v6
+        uses: cypress-io/github-action@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
