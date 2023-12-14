@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -13,19 +13,6 @@ jobs:
         with:
           node-version: 20
           package-manager: npm@latest
-
-  test:
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "npm"
-      - uses: actions/download-artifact@v3
-      - name: Untar artifact
-        run: mkdir dist && tar -xvf ./github-pages/artifact.tar -C ./dist
       - name: Cypress test
         uses: cypress-io/github-action@v6
         env:
@@ -36,7 +23,7 @@ jobs:
           wait-on: "http://localhost:4321"
 
   deploy:
-    needs: [build, test]
+    needs: [build_and_test]
     runs-on: ubuntu-latest
     permissions:
       pages: write
