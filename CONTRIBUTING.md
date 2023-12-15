@@ -179,8 +179,5 @@ feat: add hat wobble
 - Настройте редактор так, что бы форматирование происходило каждый раз, когда вы сохраняете файл. В таком случае вам не придётся задумываться о чистоте кода до того, как настанет время создать коммит.
 - Перед созданием коммита проведите линтовку используя команду, как правило `npm run lint` для node проектов. Выполните все прихоти линтера и создайте свой [вклад в проект](#ваш-первый-вклад).
 
-
-[base_url]: https://github.com/arctic-school
-[repo_name]: arctic-school.github.io
-[issues_url]: [base_url]/[repo_name]/issues
-[new_issue_url]: [issues_url]/new
+[issues_url]: https://github.com/arctic-school/arctic-school.github.io/issues
+[new_issue_url]: https://github.com/arctic-school/arctic-school.github.io/issues/new
